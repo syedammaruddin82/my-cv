@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syed Ammar Uddin | Senior IT Support Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #020c1b;
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(0, 242, 255, 0.05) 1px, transparent 0),
+                linear-gradient(135deg, #020c1b 0%, #0a192f 100%);
+            background-size: 30px 30px, cover;
+            color: #ccd6f6;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+        }
+
+        .main-container {
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            background: rgba(5, 13, 26, 0.98);
+        }
+
+        .section-header {
+            border-left: 4px solid #00f2ff;
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 1.25rem;
+        }
+
+        .glass-card {
+            background: rgba(10, 25, 47, 0.6);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+        }
+
+        .skill-stat-card {
+            background: linear-gradient(180deg, rgba(10, 25, 47, 0.8) 0%, rgba(2, 12, 27, 1) 100%);
+            border-bottom: 3px solid #00f2ff;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .skill-stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .exp-bullet {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .exp-bullet::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #00f2ff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="py-12 px-4 md:px-10">
+
+    <div class="max-w-6xl mx-auto main-container rounded-lg overflow-hidden">
+        
+        <header class="p-8 md:p-12 flex flex-col md:flex-row items-center justify-between border-b border-cyan-900/30">
+            <div class="text-center md:text-left">
+                <h1 class="text-5xl md:text-6xl font-black text-white tracking-tighter uppercase">SYED AMMAR UDDIN</h1>
+                <p class="text-xl md:text-2xl font-bold text-cyan-400 mt-2 tracking-widest uppercase">IT Support Specialist</p>
+                
+                <div class="mt-8 flex flex-col gap-2 text-sm text-gray-300">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2">
+                        <span>📍 Peshawar, Pakistan (Open to On-site)</span>
+                        <span>📞 +92 333 9289045</span>
+                    </div>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2">
+                        <span>✉️ syedammaruddin@gmail.com</span>
+                        <span class="text-cyan-400">🔗 linkedin.com/in/syed-ammar-uddin</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 md:mt-0">
+                <div class="w-44 h-44 rounded-full border-2 border-cyan-500/50 p-1 shadow-[0_0_30px_rgba(0,242,255,0.1)]">
+                    <img src="C:\Users\HP 820 G4\OneDrive\Desktop\my page\profile-pic5.png" alt="Syed Ammar Uddin" class="w-full h-full rounded-full object-cover">
+                </div>
+            </div>
+        </header>
+
+        <div class="p-8 md:p-12 space-y-16">
+            
+            <section>
+                <h3 class="section-header">Professional Summary</h3>
+                <p class="text-gray-300 text-lg leading-relaxed max-w-4xl">
+                    Dedicated IT Professional with over 15 years of experience specializing in comprehensive on-site and remote technical support. Expert in managing cross-platform environments (Windows/macOS), network infrastructure, and hardware maintenance. Proven track record of improving office productivity by reducing system downtime and providing high-touch user education. Skilled in Cloud Administration (M365/Google Workspace) and modern IT automation.
+                </p>
+            </section>
+
+            <section>
+                <h3 class="section-header">Technical Competencies</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div class="skill-stat-card">
+                        <p class="text-cyan-400 text-xs font-bold uppercase tracking-tighter mb-2">OS Systems</p>
+                        <p class="text-white text-sm font-semibold">Win 11, macOS Server</p>
+                    </div>
+                    <div class="skill-stat-card">
+                        <p class="text-cyan-400 text-xs font-bold uppercase tracking-tighter mb-2">Cloud Admin</p>
+                        <p class="text-white text-sm font-semibold">M365, Google Workspace</p>
+                    </div>
+                    <div class="skill-stat-card">
+                        <p class="text-cyan-400 text-xs font-bold uppercase tracking-tighter mb-2">Identity</p>
+                        <p class="text-white text-sm font-semibold">Azure AD, Duo MFA</p>
+                    </div>
+                    <div class="skill-stat-card">
+                        <p class="text-cyan-400 text-xs font-bold uppercase tracking-tighter mb-2">Endpoints</p>
+                        <p class="text-white text-sm font-semibold">JAMF Pro, N-able RMM</p>
+                    </div>
+                    <div class="skill-stat-card">
+                        <p class="text-cyan-400 text-xs font-bold uppercase tracking-tighter mb-2">Security</p>
+                        <p class="text-white text-sm font-semibold">SentinelOne, Cloudflare</p>
+                    </div>
+                    <div class="skill-stat-card">
+                        <p class="text-cyan-400 text-xs font-bold uppercase tracking-tighter mb-2">Enterprise</p>
+                        <p class="text-white text-sm font-semibold">SAP, Halo PSA, Zendesk</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="section-header">Professional Experience</h3>
+                
+                <div class="space-y-12">
+                    <div>
+                        <div class="flex flex-col md:flex-row md:justify-between items-baseline border-b border-cyan-900/30 pb-2 mb-4">
+                            <h4 class="text-2xl font-bold text-white">Techavidor (Remote)</h4>
+                            <span class="text-cyan-400 font-mono text-sm">Feb 2025 – Present | IT Support Specialist</span>
+                        </div>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-gray-300 text-sm">
+                            <li class="exp-bullet"><strong>SLA Management:</strong> Orchestrated L1/L2 technical support via Halo PSA, maintaining a 98% first-response SLA for a diverse global client base.</li>
+                            <li class="exp-bullet"><strong>Infrastructure Automation:</strong> Deployed custom PowerShell/Bash scripts through N-able RMM, reducing manual troubleshooting time by 15%.</li>
+                            <li class="exp-bullet"><strong>Enterprise Mobility:</strong> Scaled Apple device management using JAMF Pro, streamlining zero-touch deployment (DEP) and enforcing security compliance.</li>
+                            <li class="exp-bullet"><strong>Network Operations:</strong> Managed Cloudflare DNS updates and firewall rules to protect client websites and ensure 99.9% stable connectivity.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="flex flex-col md:flex-row md:justify-between items-baseline border-b border-cyan-900/30 pb-2 mb-4">
+                            <h4 class="text-2xl font-bold text-white">MACIT Consulting Pty Ltd (Australia/Remote)</h4>
+                            <span class="text-cyan-400 font-mono text-sm">Sep 2023 – Jan 2025 | IT Support Specialist</span>
+                        </div>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-gray-300 text-sm">
+                            <li class="exp-bullet"><strong>Identity & Access:</strong> Administered Microsoft Entra ID (Azure AD) and Google Workspace, managing complex permissions and shared drive architectures.</li>
+                            <li class="exp-bullet"><strong>Zero-Trust Security:</strong> Hardened endpoint security by deploying Duo Security MFA and monitoring real-time threats via SentinelOne.</li>
+                            <li class="exp-bullet"><strong>Knowledge Engineering:</strong> Authored comprehensive internal Wikis and client portals, increasing team efficiency by 18% via user self-service.</li>
+                            <li class="exp-bullet"><strong>Lifecycle Operations:</strong> Standardized remote onboarding/offboarding processes, ensuring Day 1 readiness via secure pre-configured hardware.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="flex flex-col md:flex-row md:justify-between items-baseline border-b border-cyan-900/30 pb-2 mb-4">
+                            <h4 class="text-2xl font-bold text-white">Lucky Cement Ltd (Pakistan)</h4>
+                            <span class="text-cyan-400 font-mono text-sm">Jan 2010 – Sep 2023 | MIS-Officer (On-Site)</span>
+                        </div>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-gray-300 text-sm">
+                            <li class="exp-bullet"><strong>Enterprise Continuity:</strong> Acted as primary lead for on-site IT operations, maintaining 100% uptime for critical hardware and network infrastructure.</li>
+                            <li class="exp-bullet"><strong>ERP Administration:</strong> Managed deployment and troubleshooting of SAP Business One, ensuring data integrity for finance and supply chain.</li>
+                            <li class="exp-bullet"><strong>Proactive Maintenance:</strong> Implemented hardware rotation policies for desktops/printers, slashing downtime by 10% through routine diagnostics.</li>
+                            <li class="exp-bullet"><strong>Executive Support:</strong> Engineered multimedia environments for board-level presentations using Zoom and MS Teams with 0% failure rate.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="section-header">Education</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start glass-card p-4 rounded">
+                            <div>
+                                <p class="text-white font-bold">MS in Information Technology (MS-IT)</p>
+                                <p class="text-sm text-gray-400">IMSciences Hayatabad | Major: ERP</p>
+                            </div>
+                            <span class="text-cyan-400 font-bold">CGPA: 3.2</span>
+                        </div>
+                        <div class="flex justify-between items-start glass-card p-4 rounded">
+                            <div>
+                                <p class="text-white font-bold">Bachelor of Computer Sciences (BCS)</p>
+                                <p class="text-sm text-gray-400">Islamia College University | Thesis: Banking Systems</p>
+                            </div>
+                            <span class="text-cyan-400 font-bold">CGPA: 3.6</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="section-header">Expertise</h3>
+                    <div class="bg-cyan-950/30 p-6 rounded border-r-4 border-cyan-500">
+                        <p class="text-4xl font-black text-white">15+</p>
+                        <p class="text-xs uppercase text-cyan-400 tracking-widest">Years Industry Exp</p>
+                    </div>
+                    <div class="bg-cyan-950/30 p-6 rounded border-r-4 border-cyan-500">
+                        <p class="text-4xl font-black text-white">100%</p>
+                        <p class="text-xs uppercase text-cyan-400 tracking-widest">Business Continuity</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="p-8 bg-[#0a192f]/50 text-center border-t border-cyan-900/20">
+            <p class="text-gray-500 text-[10px] tracking-[0.6em] uppercase">Verified Professional Profile // Syed Ammar Uddin</p>
+        </footer>
+    </div>
+
+</body>
+</html>
