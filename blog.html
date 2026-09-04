@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ticket Log — Syed Ammar Uddin</title>
+<meta name="description" content="Real troubleshooting write-ups — what broke, how it was diagnosed, and how it was fixed. MFA rollouts, JAMF deployment, DNS/mail issues, and EDR incidents.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Ticket Log — Syed Ammar Uddin">
+<meta property="og:description" content="Real troubleshooting write-ups — what broke, how it was diagnosed, and how it was fixed. MFA rollouts, JAMF deployment, DNS/mail issues, and EDR incidents.">
+<meta property="og:image" content="https://syedammaruddin.com/assets/og-image.png">
+<meta property="og:url" content="https://syedammaruddin.com/blog.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ticket Log — Syed Ammar Uddin">
+<meta name="twitter:description" content="Real troubleshooting write-ups — what broke, how it was diagnosed, and how it was fixed. MFA rollouts, JAMF deployment, DNS/mail issues, and EDR incidents.">
+<meta name="twitter:image" content="https://syedammaruddin.com/assets/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="status-line">
+  <div class="wrap"><span class="status-dot"></span> STATUS: Open to Tier 1/2 Support roles — remote &amp; on-site</div>
+</div>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a href="index.html" class="brand"><img src="assets/nav-logo.png" alt="">Syed Ammar Uddin <span>·</span> IT Support</a>
+    <nav class="primary">
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="blog.html" class="active">Ticket Log</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-hero">
+    <div class="wrap">
+      <h1>Ticket Log</h1>
+      <p class="lead">Write-ups from real troubleshooting work — what broke, how it was diagnosed, and how it was fixed. Details generalized for confidentiality.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <details class="ticket" open>
+      <summary>
+        <span class="refnum">TICKET-2026-014</span>
+        <span class="ttitle">How to roll out MFA company-wide without locking users out</span>
+        <span class="status-badge status-resolved">Resolved</span>
+      </summary>
+      <div class="body">
+        <h4>Symptom</h4>
+        <p>Leadership wanted mandatory MFA enforced across all accounts within two weeks, after a phishing attempt got uncomfortably close to succeeding. The risk: a hard cutover locks out anyone who hasn't enrolled a device yet, generating a flood of Tier 1 tickets on day one.</p>
+        <h4>Diagnosis</h4>
+        <p>Pulled a report of which accounts already had a registered MFA method versus which didn't. Roughly a third of users had never touched it. A single enforcement date would have meant a third of the company locked out simultaneously.</p>
+        <h4>Fix</h4>
+        <p>Staged the rollout in three enrollment waves by department, with a soft-enforcement grace period (prompt to enroll, not yet required) before each wave's hard cutover. Sent enrollment instructions with screenshots ahead of each wave, and staffed extra support hours on cutover mornings.</p>
+        <h4>Outcome</h4>
+        <p>Full enforcement completed on schedule with a small, manageable spike in tickets each wave instead of one large incident.</p>
+      </div>
+    </details>
+
+    <details class="ticket">
+      <summary>
+        <span class="refnum">TICKET-2026-009</span>
+        <span class="ttitle">How to set up zero-touch deployment for new Macs with JAMF Pro</span>
+        <span class="status-badge status-resolved">Resolved</span>
+      </summary>
+      <div class="body">
+        <h4>Symptom</h4>
+        <p>New hires in a fully remote company were receiving Macs that arrived as a blank slate — IT had to walk each person through manual setup over a call, often taking most of their first morning.</p>
+        <h4>Diagnosis</h4>
+        <p>The device enrollment program wasn't linked to the MDM, so machines shipped without a pre-configured enrollment profile.</p>
+        <h4>Fix</h4>
+        <p>Linked the reseller's device order records to JAMF Pro's automated enrollment, built a standard configuration profile (security policies, required apps, network settings), and tested the out-of-box flow end-to-end before the next hardware order shipped.</p>
+        <h4>Outcome</h4>
+        <p>New hires now power on a laptop and it configures itself — encryption enabled, apps installed, policies applied — with no IT call required on day one.</p>
+      </div>
+    </details>
+
+    <details class="ticket">
+      <summary>
+        <span class="refnum">TICKET-2025-041</span>
+        <span class="ttitle">Why email starts going to spam after a DNS record change</span>
+        <span class="status-badge status-postmortem">Postmortem</span>
+      </summary>
+      <div class="body">
+        <h4>Symptom</h4>
+        <p>Outbound email from the company domain started landing in recipients' spam folders, and some external servers rejected it outright, shortly after an unrelated DNS cleanup.</p>
+        <h4>Diagnosis</h4>
+        <p>Checked SPF, DKIM, and DMARC records against the mail provider's requirements. The cleanup had removed a TXT record that was assumed unused — it was actually part of the SPF include chain authorizing the mail provider to send on the domain's behalf.</p>
+        <h4>Fix</h4>
+        <p>Restored the missing SPF include via Cloudflare DNS, verified propagation, and sent test messages to major providers to confirm deliverability recovered.</p>
+        <h4>Outcome</h4>
+        <p>Added a documented "do not remove" tag and internal note on every DNS record tied to mail authentication, so future cleanups check that list first.</p>
+      </div>
+    </details>
+
+    <details class="ticket">
+      <summary>
+        <span class="refnum">TICKET-2025-027</span>
+        <span class="ttitle">Why EDR keeps flagging the same endpoints: a stale local admin account</span>
+        <span class="status-badge status-resolved">Resolved</span>
+      </summary>
+      <div class="body">
+        <h4>Symptom</h4>
+        <p>SentinelOne flagged repeated suspicious process activity on the same three endpoints over two weeks, each time auto-quarantined before damage but recurring.</p>
+        <h4>Diagnosis</h4>
+        <p>All three machines shared a local administrator account with a weak, reused password left over from an old imaging process — a common entry point for automated credential-stuffing attempts on exposed RDP.</p>
+        <h4>Fix</h4>
+        <p>Disabled the shared local admin account, rotated credentials fleet-wide via the RMM, and closed the exposed RDP port in favor of VPN-gated remote access.</p>
+        <h4>Outcome</h4>
+        <p>No further alerts on the affected endpoints. Audited the rest of the fleet for the same imaging leftover and cleaned up four more accounts.</p>
+      </div>
+    </details>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 Syed Ammar Uddin</span>
+    <div class="footer-links">
+      <a href="mailto:syedammaruddin@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>Email</a>
+      <a href="tel:+923339289045"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Phone</a>
+      <a href="https://linkedin.com/in/syed-ammar-uddin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

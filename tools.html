@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools — Syed Ammar Uddin</title>
+<meta name="description" content="Free browser-based IT support tools: password generator, subnet calculator, DNS lookup, hash generator, JSON formatter, and more.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Support Toolbox — Syed Ammar Uddin">
+<meta property="og:description" content="Free browser-based IT support tools: password generator, subnet calculator, DNS lookup, hash generator, JSON formatter, and more.">
+<meta property="og:image" content="https://syedammaruddin.com/assets/og-image.png">
+<meta property="og:url" content="https://syedammaruddin.com/tools.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Support Toolbox — Syed Ammar Uddin">
+<meta name="twitter:description" content="Free browser-based IT support tools: password generator, subnet calculator, DNS lookup, hash generator, JSON formatter, and more.">
+<meta name="twitter:image" content="https://syedammaruddin.com/assets/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="status-line">
+  <div class="wrap"><span class="status-dot"></span> STATUS: Open to Tier 1/2 Support roles — remote &amp; on-site</div>
+</div>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a href="index.html" class="brand"><img src="assets/nav-logo.png" alt="">Syed Ammar Uddin <span>·</span> IT Support</a>
+    <nav class="primary">
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="blog.html">Ticket Log</a></li>
+        <li><a href="tools.html" class="active">Tools</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-hero">
+    <div class="wrap">
+      <h1>Support Toolbox</h1>
+      <p class="lead">Small utilities I actually use day-to-day, rebuilt here as quick browser tools. Everything runs locally in your browser — nothing you enter is sent anywhere, except the two lookup tools which query a public DNS/IP API directly from your device.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- 1 Password Generator -->
+    <div class="tool">
+      <h3><span class="idx">01</span> Password Generator</h3>
+      <p class="desc">Generate a random password for new accounts or temporary resets.</p>
+      <div class="row">
+        <div>
+          <label for="pw-length">Length: <span id="pw-length-val">16</span></label>
+          <input type="range" id="pw-length" min="8" max="48" value="16">
+        </div>
+      </div>
+      <div class="checkbox-row">
+        <label><input type="checkbox" id="pw-upper" checked> Uppercase</label>
+        <label><input type="checkbox" id="pw-lower" checked> Lowercase</label>
+        <label><input type="checkbox" id="pw-numbers" checked> Numbers</label>
+        <label><input type="checkbox" id="pw-symbols" checked> Symbols</label>
+      </div>
+      <button class="btn solid" style="margin-top:12px;" onclick="genPassword()">Generate</button>
+      <div class="output mono" id="pw-output">Click generate</div>
+      <button class="btn copy-btn" onclick="copyOut('pw-output')">Copy</button>
+    </div>
+
+    <!-- 2 Subnet Calculator -->
+    <div class="tool">
+      <h3><span class="idx">02</span> Subnet / CIDR Calculator</h3>
+      <p class="desc">Enter an IPv4 address with CIDR notation to get network details.</p>
+      <label for="subnet-input">IP / CIDR</label>
+      <input type="text" id="subnet-input" placeholder="e.g. 192.168.1.10/24">
+      <button class="btn solid" style="margin-top:12px;" onclick="calcSubnet()">Calculate</button>
+      <div class="output mono" id="subnet-output">Enter an address above</div>
+    </div>
+
+    <!-- 3 DNS Lookup -->
+    <div class="tool">
+      <h3><span class="idx">03</span> DNS Lookup</h3>
+      <p class="desc">Query DNS records for a domain via Google's public DNS-over-HTTPS API.</p>
+      <div class="row">
+        <div>
+          <label for="dns-domain">Domain</label>
+          <input type="text" id="dns-domain" placeholder="example.com">
+        </div>
+        <div>
+          <label for="dns-type">Record type</label>
+          <select id="dns-type">
+            <option>A</option><option>AAAA</option><option>MX</option>
+            <option>TXT</option><option>NS</option><option>CNAME</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn solid" style="margin-top:12px;" onclick="dnsLookup()">Look up</button>
+      <div class="output mono" id="dns-output">Results appear here</div>
+    </div>
+
+    <!-- 4 IP Info -->
+    <div class="tool">
+      <h3><span class="idx">04</span> IP Address Lookup</h3>
+      <p class="desc">Get approximate geolocation and network info for an IP (leave blank for your own).</p>
+      <label for="ip-input">IP address (optional)</label>
+      <input type="text" id="ip-input" placeholder="e.g. 8.8.8.8">
+      <button class="btn solid" style="margin-top:12px;" onclick="ipLookup()">Look up</button>
+      <div class="output mono" id="ip-output">Results appear here</div>
+    </div>
+
+    <!-- 5 Base64 -->
+    <div class="tool">
+      <h3><span class="idx">05</span> Base64 Encode / Decode</h3>
+      <p class="desc">Quickly encode or decode Base64 strings — useful for email headers, tokens, and config values.</p>
+      <label for="b64-input">Input</label>
+      <textarea id="b64-input" placeholder="Text or Base64 string"></textarea>
+      <div class="btn-row" style="margin-top:8px;">
+        <button class="btn solid" onclick="b64Encode()">Encode</button>
+        <button class="btn" onclick="b64Decode()">Decode</button>
+      </div>
+      <div class="output mono" id="b64-output">Result appears here</div>
+    </div>
+
+    <!-- 6 Hash Generator -->
+    <div class="tool">
+      <h3><span class="idx">06</span> Hash Generator</h3>
+      <p class="desc">Generate SHA-1 / SHA-256 / SHA-512 hashes for file or text verification.</p>
+      <label for="hash-input">Text</label>
+      <textarea id="hash-input" placeholder="Text to hash"></textarea>
+      <label for="hash-algo">Algorithm</label>
+      <select id="hash-algo">
+        <option value="SHA-1">SHA-1</option>
+        <option value="SHA-256" selected>SHA-256</option>
+        <option value="SHA-512">SHA-512</option>
+      </select>
+      <button class="btn solid" style="margin-top:12px;" onclick="genHash()">Generate hash</button>
+      <div class="output mono" id="hash-output">Result appears here</div>
+    </div>
+
+    <!-- 7 JSON Formatter -->
+    <div class="tool">
+      <h3><span class="idx">07</span> JSON Formatter &amp; Validator</h3>
+      <p class="desc">Pretty-print and validate JSON — handy for API responses and config files.</p>
+      <label for="json-input">JSON</label>
+      <textarea id="json-input" placeholder='{"key":"value"}'></textarea>
+      <button class="btn solid" style="margin-top:12px;" onclick="formatJSON()">Format</button>
+      <div class="output mono" id="json-output">Result appears here</div>
+    </div>
+
+    <!-- 8 Regex Tester -->
+    <div class="tool">
+      <h3><span class="idx">08</span> Regex Tester</h3>
+      <p class="desc">Test a regular expression against sample text and see matches highlighted.</p>
+      <label for="regex-pattern">Pattern</label>
+      <input type="text" id="regex-pattern" placeholder="e.g. \d{3}-\d{4}">
+      <label for="regex-text">Test text</label>
+      <textarea id="regex-text" placeholder="Text to search"></textarea>
+      <button class="btn solid" style="margin-top:12px;" onclick="testRegex()">Test</button>
+      <div class="output mono" id="regex-output">Matches appear here</div>
+    </div>
+
+    <!-- 9 Storage Converter -->
+    <div class="tool">
+      <h3><span class="idx">09</span> Data / Storage Unit Converter</h3>
+      <p class="desc">Convert between bytes, KB, MB, GB, and TB.</p>
+      <div class="row">
+        <div>
+          <label for="conv-value">Value</label>
+          <input type="number" id="conv-value" value="1" onchange="convertStorage()" oninput="convertStorage()">
+        </div>
+        <div>
+          <label for="conv-unit">Unit</label>
+          <select id="conv-unit" onchange="convertStorage()">
+            <option value="1">Bytes</option>
+            <option value="1024" selected>KB</option>
+            <option value="1048576">MB</option>
+            <option value="1073741824">GB</option>
+            <option value="1099511627776">TB</option>
+          </select>
+        </div>
+      </div>
+      <div class="output mono" id="conv-output">—</div>
+    </div>
+
+    <!-- 10 Text Diff -->
+    <div class="tool">
+      <h3><span class="idx">10</span> Text Diff Checker</h3>
+      <p class="desc">Compare two blocks of text line by line — useful for config file comparisons.</p>
+      <div class="row">
+        <div>
+          <label for="diff-a">Text A</label>
+          <textarea id="diff-a"></textarea>
+        </div>
+        <div>
+          <label for="diff-b">Text B</label>
+          <textarea id="diff-b"></textarea>
+        </div>
+      </div>
+      <button class="btn solid" style="margin-top:12px;" onclick="diffText()">Compare</button>
+      <div class="output mono" id="diff-output">Differences appear here</div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 Syed Ammar Uddin</span>
+    <div class="footer-links">
+      <a href="mailto:syedammaruddin@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>Email</a>
+      <a href="tel:+923339289045"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Phone</a>
+      <a href="https://linkedin.com/in/syed-ammar-uddin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="tools.js"></script>
+</body>
+</html>
